@@ -1,0 +1,22 @@
+{
+  "name": "webprojesi",
+  "version": "1.0.0",
+  "description": "Bilgisayarli Kontrol Final Projesi",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mongodb": "^3.2.3",
+    "node-cron": "^2.0.3",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ramazan Taplamacı",
+  "license": "MIT"
+}

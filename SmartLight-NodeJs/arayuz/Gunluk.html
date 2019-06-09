@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ramazan Taplamacı</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+    <!-- ChartJs CDNi -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+        //Uygulama katmanımızı(ng-app) belirledik Normalde buraya Arrayde gönderilebilir biz göndermedik.
+        var myapp = angular.module("myapp", []);
+
+        //Kullanacağımız Angular metodunu oluşturuyoruz
+        var mycontroller = myapp.controller("mycontroller", function ($scope, $http) {
+            $http.get("/kayitGetirGunluk").then(function (response) {
+                $scope.veriler = response.data;
+
+                //Chart için Gun bilgileri alınıyor
+                $scope.chartGunler = [];
+                angular.forEach($scope.veriler, function (value, key) {
+                    $scope.siradakiData = value;
+                    $scope.chartGunler.push($scope.siradakiData.Gun + '.' + $scope.siradakiData.Ay + '.' + $scope.siradakiData.Yil);
+                });
+
+                //Chart için Kullanım bilgileri alınıyor
+                $scope.chartKullanim = [];
+                angular.forEach($scope.veriler, function (value, key) {
+                    $scope.siradakiData = value;
+                    $scope.chartKullanim.push(($scope.siradakiData.ToplamSaat / 60000).toString());
+                });
+
+                //Chart hazırlanıyor
+                var ctx = document.getElementById('tablo').getContext('2d');
+                var chart = new Chart(ctx, {
+                    //tablo tipi
+                    type: 'line',
+                    //tablo datatsı ve ayarlamaları
+                    data: {
+                        //datanın dönemi
+                        labels: $scope.chartGunler,
+                        datasets: [{
+                            //tablo başlığı
+                            label: 'Gün Bazlı Kullanım (dk)',
+                            backgroundColor: 'rgb(50, 50, 50)',
+                            borderColor: 'rgb(200, 200, 200)',
+                            //data
+                            data: $scope.chartKullanim
+                        }]
+                    }
+
+                });
+
+            });
+        });
+
+    </script>
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        .table {
+            width: 100%;
+        }
+
+        .table tr td {
+            border-bottom: 1px solid #444;
+            border-left: 1px solid #444;
+
+        }
+
+        .table tr th {
+            text-align: left;
+            border-bottom: 2px solid #fff;
+        }
+
+        .gorsel {
+            width: 30px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            padding: 5px;
+            border-radius: 2px;
+        }
+
+        .link:hover {
+            background-color: #222;
+        }
+
+        .linkAlt {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .linkAlt:hover {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body style="background-color:black" ng-app="myapp">
+    <div style="width:100%;margin-top: 50px; min-height: 300px;">
+        <h1>Son 31 Gün</h1>
+        <hr>
+        <a href="/" class="link">Anasayfa</a> | <a href="/Bugun" class="link">Bu Gün</a> <a href="/Gunluk"
+            class="link">Günlük</a> <a href="/Aylik" class="link">Aylık</a> <a href="/Yillik" class="link">Yıllık</a>
+        <hr>
+        <div ng-controller="mycontroller">
+
+            <!--Chart belirtiliyor-->
+            <canvas id="tablo"></canvas>
+            <br>
+
+            Ücret Hesabı için;<br>
+            Birim Fiyat (kW): <br> <input type="text" ng-model="birimFiyat" style="color:#222">
+            <br>
+            Saatlik Tüketim (kW): <br> <input type="text" ng-model="saatlikTuketim" style="color:#222">
+            <table class="table">
+                <tr>
+                    <th>Tarih</th>
+                    <th>Toplam Saat</th>
+                    <th>Yaklaşık Ücret</th>
+                </tr>
+                <tr ng-repeat="veri in veriler">
+                    <td>{{veri.Gun}}.{{veri.Ay}}.{{veri.Yil}}</td>
+                    <td>{{veri.ToplamSaat | date:'H:mm:ss'}}</td>
+                    <!-- <td>{{veri.ToplamSaat/60000 | number}}</td> -->
+                    <td>{{(veri.ToplamSaat/3600000)*birimFiyat*saatlikTuketim | number}} TL</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 200px;">
+        <img src="/img/rtaplamaci.png" alt="" class="gorsel">
+        <p><a href="/Gelistirici" class="linkAlt">Ramazan Taplamacı</a></p>
+    </div>
+</body>
+
+</html>
