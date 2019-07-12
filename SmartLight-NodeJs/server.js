@@ -175,9 +175,6 @@ app.get("/LdrAcKapat", function (req, res) {
 
 //-------------------- Veri Tabanı Kayıt Girme İşlemleri --------------------------
 
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! En son aç için nodemcu tetikleme yapıyordum------------------------ 
-
 //Kayıt Ekleme
 app.get("/ac", function (req, res) {
 
