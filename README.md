@@ -51,3 +51,5 @@ Alınan kayıtlar doğrultusunda her gün saat 23:59’da çalışmak üzere haz
 “aylikKayitlar” koleksiyonuna eklenen veriler ise her yılın Aralık ayının 30’u saat 23:59’da çalışmak üzere hazırlanan cron-job vasıtası ile aylıkKayitlar koleksiyonunda bulunan ilgili ayın verilerinin ortalamasını yıllıkKayitlar koleksiyonuna ekler ve bu veriler Aylık İstatistikler için kullanılır.
 
 Sesli Komutlar ise projede kullanılan ve Android uygulama üzerinde çalışan BuiltIn Google ses servisini kullanmaktadır. Bu doğrultuda alınan ses kaydı Google Servisine gönderilip gelen cevaba göre işlem yapılmaktadır.
+
+![Uygulama Görselleri](https://github.com/rtaplamaci/SmartLight-IoT/blob/master/Uygulama%20G%C3%B6rselleri.png)
