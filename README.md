@@ -21,7 +21,8 @@ Belirli bir aydınlatma aygıtının günlük durumunun takip edilebileceği, g�
 
 Kullanıcıların uzaktan erişim sağlaması amaçlanarak bu doğrultuda hibrit mobil uygulama üzerine entegre edilen IoT projesidir.
 
-# Kullanılan Teknolojiler
+![Uygulama Görselleri](https://github.com/rtaplamaci/SmartLight-IoT/blob/master/Uygulama%20G%C3%B6rselleri.png)
+## Kullanılan Teknolojiler
 Akıllı Aydınlatma projesini geliştirirken genel itibari ile web teknolojilerini kullanarak web uygulaması oluşturma, ardından hibrit uygulamaya çevirerek Web ve Android platformlarını desteklemek amaçlanmıştır.
 
 Web Teknolojileri olarak;
@@ -34,7 +35,7 @@ Android uygulaması için Java ve BuiltIn Google Ses Tanımlama Servisi kullanı
 
 IoT tarafında ise Nodemcu Lolin, Ldr Işık Sensörü ve Tek Kanallı Röle kullanılarak uzaktan ve sensörlü kontrol için düzenek hazırlanmıştır. Programlama için C++ programa dili kullanılmıştır.  
 
-# Çalışma Yöntemleri
+## Çalışma Yöntemleri
 
 Sensor Aktif Durumda İken:
 
@@ -51,5 +52,3 @@ Alınan kayıtlar doğrultusunda her gün saat 23:59’da çalışmak üzere haz
 “aylikKayitlar” koleksiyonuna eklenen veriler ise her yılın Aralık ayının 30’u saat 23:59’da çalışmak üzere hazırlanan cron-job vasıtası ile aylıkKayitlar koleksiyonunda bulunan ilgili ayın verilerinin ortalamasını yıllıkKayitlar koleksiyonuna ekler ve bu veriler Aylık İstatistikler için kullanılır.
 
 Sesli Komutlar ise projede kullanılan ve Android uygulama üzerinde çalışan BuiltIn Google ses servisini kullanmaktadır. Bu doğrultuda alınan ses kaydı Google Servisine gönderilip gelen cevaba göre işlem yapılmaktadır.
-
-![Uygulama Görselleri](https://github.com/rtaplamaci/SmartLight-IoT/blob/master/Uygulama%20G%C3%B6rselleri.png)
