@@ -1,4 +1,4 @@
-# Bilgilendirme
+## Bilgilendirme
 SmartLigt projesi benim(Ramazna Taplamacı) tarafımdan Bilgisayarlı Kontrol dersi final projesi olarak hazırlanmış olup, ilk NodeJS, AngularJs ve Android uygulama çalışmamı içermektedir.
 
 Projeyi Ayağa Kaldırabilmeniz için;
